@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Data Navigator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F4F5F7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .main-container {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+        .lusha-blue {
+            color: #5627FF;
+        }
+        .lusha-button {
+            background-color: #5627FF;
+            color: #FFFFFF;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .lusha-button:hover {
+            background-color: #4A21E0;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: white;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        select:focus {
+            border-color: #5627FF;
+        }
+        option:disabled {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h2 class="text-2xl font-semibold lusha-blue text-center">Analytics Data Navigator</h2>
+
+        <div class="mt-4 p-4 rounded-lg">
+            <div class="flex items-center space-x-2 border border-gray-300 rounded-lg p-2 bg-gray-100">
+                <input type="text" id="searchInput" placeholder="Discover metrics about..." class="flex-1 p-2 outline-none bg-transparent">
+                <button onclick="showResult()" class="lusha-button">Search</button>
+            </div>
+            
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="mt-4 flex space-x-4 border-b pb-2">
+            <button onclick="showTab('selfAnalysis')" id="selfAnalysisTab" class="flex items-center px-4 py-2 bg-gray-200 rounded-lg font-semibold">&#x1F5C3; Self Analysis</button>
+            <button onclick="showTab('lushaDashboards')" id="lushaDashboardsTab" class="flex items-center px-4 py-2 text-gray-500">📊 Lusha Dashboards</button>
+            <button onclick="showTab('adHocAnalysis')" id="adHocAnalysisTab" class="flex items-center px-4 py-2 text-gray-500">⏳ Ad Hoc Analysis</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="selfAnalysis" class="tab-content mt-6 p-4 bg-gray-50 rounded-lg">
+            <h2 class="font-semibold">Personal Analytics Workspace</h2>
+            <p class="text-gray-600 text-sm">Create and save your own analytics views</p>
+            <div id="searchResult" class="mt-4 text-gray-700"></div>
+        </div>
+
+        <div id="lushaDashboards" class="tab-content mt-6 p-4 bg-gray-50 rounded-lg hidden">
+            <h2 class="font-semibold">Lusha Dashboards</h2>
+            <p class="text-gray-600 text-sm">Access pre-built dashboards for quick insights</p>
+            <iframe src="https://prod-uk-a.online.tableau.com/#/site/lushaanalytics/views/DailyMRR-PositiveNegative-DETesting_17266794401100/DailyMRR" width="100%" height="600" style="border: none;"></iframe>
+        </div>
+
+        <div id="adHocAnalysis" class="tab-content mt-6 p-4 bg-gray-50 rounded-lg hidden">
+            <h2 class="font-semibold">Ad Hoc Analysis</h2>
+            <p class="text-gray-600 text-sm">Perform custom analysis with flexible tools</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tab content
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+
+            // Remove active styles from all tabs
+            const tabButtons = document.querySelectorAll('[id$="Tab"]');
+            tabButtons.forEach(button => {
+                button.classList.remove('bg-gray-200', 'font-semibold');
+                button.classList.add('text-gray-500');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Add active styles to the clicked tab button
+            document.getElementById(`${tabId}Tab`).classList.add('bg-gray-200', 'font-semibold');
+            document.getElementById(`${tabId}Tab`).classList.remove('text-gray-500');
+        }
+    </script>
+<div id="searchResult" class="mt-6 p-4 bg-gray-50 rounded-lg hidden"></div>
+    <script>
+        function showResult() {
+            const resultContainer = document.getElementById('searchResult');
+            resultContainer.classList.remove('hidden');
+            resultContainer.innerHTML = '';
+            
+            const text = `
+                • Data insights can help businesses optimize sales performance by identifying high-value customer segments and improving targeting strategies.
+
+
+                • Understanding user engagement metrics allows companies to refine product offerings, enhance user experiences, and increase retention rates.
+
+
+                • Financial analytics provide crucial insights into revenue growth, cost reduction, and investment opportunities for better decision-making.
+            `;
+            
+            let index = 0;
+            function typeEffect() {
+                if (index < text.length) {
+                    resultContainer.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeEffect, 20); // Adjust speed here
+                }
+            }
+            
+            typeEffect();
+        }
+    </script>
+<script>
+        function showResult() {
+            const resultContainer = document.getElementById('searchResult');
+            resultContainer.innerHTML = '';
+            
+            const text = `
+                • Data insights can help businesses optimize sales performance by identifying high-value customer segments and improving targeting strategies.
+
+
+                • Understanding user engagement metrics allows companies to refine product offerings, enhance user experiences, and increase retention rates.
+
+
+                • Financial analytics provide crucial insights into revenue growth, cost reduction, and investment opportunities for better decision-making.
+            `;
+            
+            let index = 0;
+            function typeEffect() {
+                if (index < text.length) {
+                    resultContainer.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeEffect, 20); // Adjust speed here
+                }
+            }
+            
+            typeEffect();
+        }
+    </script>
+<script>
+        function showResult() {
+            const resultContainer = document.getElementById('searchResult');
+            resultContainer.innerHTML = '';
+            
+            const text = [
+                "• Data insights can help businesses optimize sales performance by identifying high-value customer segments and improving targeting strategies.",
+                "• Understanding user engagement metrics allows companies to refine product offerings, enhance user experiences, and increase retention rates.",
+                "• Financial analytics provide crucial insights into revenue growth, cost reduction, and investment opportunities for better decision-making."
+            ];
+            
+            let index = 0;
+            function typeEffect() {
+                if (index < text.length) {
+                    const paragraph = document.createElement('p');
+                    paragraph.classList.add('mb-2');
+                    resultContainer.appendChild(paragraph);
+                    let charIndex = 0;
+                    function typeLine() {
+                        if (charIndex < text[index].length) {
+                            paragraph.innerHTML += text[index].charAt(charIndex);
+                            charIndex++;
+                            setTimeout(typeLine, 20); // Adjust speed here
+                        } else {
+                            index++;
+                            if (index < text.length) {
+                                setTimeout(typeEffect, 500);
+                            }
+                        }
+                    }
+                    typeLine();
+                }
+            }
+            
+            typeEffect();
+        }
+    </script>
+</body>
+</html>
