@@ -19,8 +19,10 @@
             border-radius: 12px;
             padding: 24px;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            width: 600px;
+            width: 1000px;
+            margin-top: 50px;
         }
+
         .lusha-blue {
             color: #5627FF;
         }
@@ -54,9 +56,22 @@
             text-transform: uppercase;
             color: #888;
         }
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .logo-container img {
+            height: 40px;
+            width: auto;
+        }
     </style>
 </head>
 <body>
+    <div class="logo-container">
+        <img src="https://seeklogo.com/images/L/lusha-logo-D0D82B12BA-seeklogo.com.png" alt="Lusha Logo">
+    </div>
+
     <div class="main-container">
         <h2 class="text-2xl font-semibold lusha-blue text-center">Analytics Data Navigator</h2>
 
@@ -65,7 +80,7 @@
                 <input type="text" id="searchInput" placeholder="Discover metrics about..." class="flex-1 p-2 outline-none bg-transparent">
                 <button onclick="showResult()" class="lusha-button">Search</button>
             </div>
-            
+
         </div>
 
         <!-- Tabs Navigation -->
@@ -77,15 +92,29 @@
 
         <!-- Tab Content -->
         <div id="selfAnalysis" class="tab-content mt-6 p-4 bg-gray-50 rounded-lg">
-            <h2 class="font-semibold">Personal Analytics Workspace</h2>
-            <p class="text-gray-600 text-sm">Create and save your own analytics views</p>
-            <div id="searchResult" class="mt-4 text-gray-700"></div>
+            <div id="searchResult" class="mt-4 text-gray-700 whitespace-pre-line"></div>
         </div>
 
         <div id="lushaDashboards" class="tab-content mt-6 p-4 bg-gray-50 rounded-lg hidden">
-            <h2 class="font-semibold">Lusha Dashboards</h2>
-            <p class="text-gray-600 text-sm">Access pre-built dashboards for quick insights</p>
-            <iframe src="https://prod-uk-a.online.tableau.com/#/site/lushaanalytics/views/DailyMRR-PositiveNegative-DETesting_17266794401100/DailyMRR" width="100%" height="600" style="border: none;"></iframe>
+
+            <div class="mt-4">
+                <h3 class="text-lg font-semibold">Additional Dashboards</h3>
+                <ul class="list-disc pl-6 text-gray-700 space-y-4">
+                    <li>
+                        <a href="https://prod-uk-a.online.tableau.com/#/site/lushaanalytics/views/TLM_17254728907650/TopLevelMetrics" class="text-blue-600 underline font-semibold" target="_blank">Top Level Metrics</a>: Provides a comprehensive overview of key business KPIs, allowing stakeholders to assess company performance at a glance.
+                    </li>
+                    <li>
+                        <a href="https://prod-uk-a.online.tableau.com/#/site/lushaanalytics/views/NDRRetention/NDR" class="text-blue-600 underline font-semibold" target="_blank">NDR</a>: Tracks Net Dollar Retention trends, helping teams understand revenue retention and churn behavior over time.
+                    </li>
+                    <li>
+                        <a href="https://prod-uk-a.online.tableau.com/#/site/lushaanalytics/views/Domain/Domain" class="text-blue-600 underline font-semibold" target="_blank">Domain</a>: Analyzes domain-specific data, offering insights into trends and customer behavior by domain.
+                    </li>
+                    <li>
+                        <a href="https://prod-uk-a.online.tableau.com/#/site/lushaanalytics/views/Renewal/Renewals" class="text-blue-600 underline font-semibold" target="_blank">Renewals</a>: Tracks renewal performance and forecasts, enabling sales and finance teams to optimize retention strategies.
+                    </li>
+                </ul>
+            </div>
+
         </div>
 
         <div id="adHocAnalysis" class="tab-content mt-6 p-4 bg-gray-50 rounded-lg hidden">
@@ -115,13 +144,13 @@
             document.getElementById(`${tabId}Tab`).classList.remove('text-gray-500');
         }
     </script>
-<div id="searchResult" class="mt-6 p-4 bg-gray-50 rounded-lg hidden"></div>
+<div id="searchResult2" class="mt-6 p-4 bg-gray-50 rounded-lg hidden"></div>
     <script>
         function showResult() {
             const resultContainer = document.getElementById('searchResult');
             resultContainer.classList.remove('hidden');
             resultContainer.innerHTML = '';
-            
+
             const text = `
                 • Data insights can help businesses optimize sales performance by identifying high-value customer segments and improving targeting strategies.
 
@@ -131,16 +160,16 @@
 
                 • Financial analytics provide crucial insights into revenue growth, cost reduction, and investment opportunities for better decision-making.
             `;
-            
+
             let index = 0;
             function typeEffect() {
                 if (index < text.length) {
                     resultContainer.innerHTML += text.charAt(index);
                     index++;
-                    setTimeout(typeEffect, 20); // Adjust speed here
+                    setTimeout(typeEffect, 1); // Adjust speed here
                 }
             }
-            
+
             typeEffect();
         }
     </script>
@@ -148,7 +177,7 @@
         function showResult() {
             const resultContainer = document.getElementById('searchResult');
             resultContainer.innerHTML = '';
-            
+
             const text = `
                 • Data insights can help businesses optimize sales performance by identifying high-value customer segments and improving targeting strategies.
 
@@ -158,16 +187,16 @@
 
                 • Financial analytics provide crucial insights into revenue growth, cost reduction, and investment opportunities for better decision-making.
             `;
-            
+
             let index = 0;
             function typeEffect() {
                 if (index < text.length) {
                     resultContainer.innerHTML += text.charAt(index);
                     index++;
-                    setTimeout(typeEffect, 20); // Adjust speed here
+                    setTimeout(typeEffect, 3); // Adjust speed here
                 }
             }
-            
+
             typeEffect();
         }
     </script>
@@ -175,13 +204,40 @@
         function showResult() {
             const resultContainer = document.getElementById('searchResult');
             resultContainer.innerHTML = '';
-            
+
             const text = [
-                "• Data insights can help businesses optimize sales performance by identifying high-value customer segments and improving targeting strategies.",
-                "• Understanding user engagement metrics allows companies to refine product offerings, enhance user experiences, and increase retention rates.",
-                "• Financial analytics provide crucial insights into revenue growth, cost reduction, and investment opportunities for better decision-making."
-            ];
-            
+    "Key Insights:",
+    "• Steady MRR Growth:",
+    "• The Daily MRR chart shows a consistent upward trend in Monthly Recurring Revenue (MRR), reaching approximately $5.85M.",
+    "• This suggests positive revenue growth over time.",
+    "• Daily New MRR Volatility:",
+    "• The Daily New MRR chart shows fluctuations in MRR with spikes in gains (green) and losses in churn (orange/red).",
+    "• There are significant drops and peaks in new MRR, indicating the impact of new signups, upgrades, and churn.",
+    "• Financial Breakdown (As of 28/01/2025):",
+    "• New MRR: $1,131 → Indicates fresh revenue generated from new customers.",
+    "• Upgrades: $708 from 9 accounts → Revenue increase from existing customers upgrading their plans.",
+    "• Returns: $413 from 6 accounts → Represents refunds or revenue loss due to downgrades or cancellations.",
+    "• Downgrades: $3,410 from 5 accounts → Revenue reduction from existing customers shifting to lower plans.",
+    "• Churn: -$9,615 from 54 accounts → Significant revenue loss from customer churn.",
+    "• Net Revenue Impact:",
+    "• The grand total net MRR change is -$10,774, meaning revenue losses (churn and downgrades) have outweighed new revenue gains (new MRR and upgrades).",
+    "• Churn is the biggest negative factor, accounting for the largest loss of $9,615.",
+    "",
+    "Actionable Recommendations:",
+    "1. Address High Churn Rate:",
+    "• Investigate reasons for customer churn (e.g., pricing, customer experience, product fit).",
+    "• Implement retention strategies like targeted outreach, better customer support, or loyalty programs.",
+    "2. Boost Customer Upgrades:",
+    "• Promote features that encourage customers to upgrade their plans.",
+    "• Offer incentives such as discounts for annual commitments.",
+    "3. Analyze Revenue Trends by Category/Domain:",
+    "• Breakdown revenue performance by entity type (Account, Category, Domain) to identify areas of improvement.",
+    "• Adjust marketing and sales strategies accordingly.",
+    "4. Monitor Daily MRR Trends Closely:",
+    "• Identify key dates where MRR dips occur and correlate with product updates, customer complaints, or external factors.",
+    "• Use predictive analytics to anticipate future revenue fluctuations."
+];
+
             let index = 0;
             function typeEffect() {
                 if (index < text.length) {
@@ -193,19 +249,131 @@
                         if (charIndex < text[index].length) {
                             paragraph.innerHTML += text[index].charAt(charIndex);
                             charIndex++;
-                            setTimeout(typeLine, 20); // Adjust speed here
+                            setTimeout(typeLine, 5); // Adjust speed here
                         } else {
                             index++;
                             if (index < text.length) {
-                                setTimeout(typeEffect, 500);
+                                setTimeout(typeEffect, 100);
                             }
                         }
                     }
                     typeLine();
                 }
             }
-            
+
             typeEffect();
+        }
+    </script>
+<script>
+        let tabFirstLoad = {};
+
+        function showTab(tabId) {
+            // Hide all tab content
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+
+            // Remove active styles from all tabs
+            const tabButtons = document.querySelectorAll('[id$="Tab"]');
+            tabButtons.forEach(button => {
+                button.classList.remove('bg-gray-200', 'font-semibold');
+                button.classList.add('text-gray-500');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Add active styles to the clicked tab button
+            document.getElementById(`${tabId}Tab`).classList.add('bg-gray-200', 'font-semibold');
+            document.getElementById(`${tabId}Tab`).classList.remove('text-gray-500');
+
+            // Apply typing effect only on first load of the tab
+            if (!tabFirstLoad[tabId]) {
+                tabFirstLoad[tabId] = true;
+                applyTypingEffect(tabId);
+            }
+        }
+
+        function applyTypingEffect(tabId) {
+            const tabContent = document.getElementById(tabId);
+            if (!tabContent) return;
+
+            const elements = tabContent.querySelectorAll('p, h3, li');
+            elements.forEach((element, i) => {
+                let originalHTML = element.innerHTML;
+                element.innerHTML = '';
+                let index = 0;
+
+                function typeCharacter() {
+                    if (index < originalHTML.length) {
+                        element.innerHTML += originalHTML.charAt(index);
+                        index++;
+                        setTimeout(typeCharacter, 20);
+                    }
+                }
+
+                setTimeout(typeCharacter, i * 500);
+            });
+        }
+                }
+
+                setTimeout(typeCharacter, i * 500);
+            });
+        }
+                }
+
+                setTimeout(typeCharacter, i * 500);
+            });
+        }
+    </script>
+<script>
+        let tabFirstLoad = {};
+
+        function showTab(tabId) {
+            // Hide all tab content
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+
+            // Remove active styles from all tabs
+            const tabButtons = document.querySelectorAll('[id$="Tab"]');
+            tabButtons.forEach(button => {
+                button.classList.remove('bg-gray-200', 'font-semibold');
+                button.classList.add('text-gray-500');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Add active styles to the clicked tab button
+            document.getElementById(`${tabId}Tab`).classList.add('bg-gray-200', 'font-semibold');
+            document.getElementById(`${tabId}Tab`).classList.remove('text-gray-500');
+
+            // Apply typing effect only on first load of the tab
+            if (!tabFirstLoad[tabId]) {
+                tabFirstLoad[tabId] = true;
+                applyTypingEffect(tabId);
+            }
+        }
+
+        function applyTypingEffect(tabId) {
+            const tabContent = document.getElementById(tabId);
+            if (!tabContent) return;
+
+            const elements = tabContent.querySelectorAll('p, a');
+            elements.forEach((element, i) => {
+                let originalText = element.innerText;
+                element.innerText = '';
+                let index = 0;
+
+                function typeCharacter() {
+                    if (index < originalText.length) {
+                        element.innerHTML += originalText.charAt(index);
+                        index++;
+                        setTimeout(typeCharacter, 20);
+                    }
+                }
+
+                setTimeout(typeCharacter, i * 500);
+            });
         }
     </script>
 </body>
